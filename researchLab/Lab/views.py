@@ -327,3 +327,6 @@ def demo(request):
 # redined pages
 def work1(request):
    return render(request,'works-1.html')
+
+def use1(request):
+   return render(request,'use-1.html')
