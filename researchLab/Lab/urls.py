@@ -23,6 +23,7 @@ urlpatterns=[
 
      # refined pages
      path('work1/',views.work1,name='work1'),
-     path('use1/',views.use1,name="use1")
+     path('use1/',views.use1,name="use1"),
+     path('research1/',views.research1,name='instrumentation1')
   
 ]
