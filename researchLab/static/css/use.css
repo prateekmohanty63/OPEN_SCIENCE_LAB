@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    font-family: Ringside Narrow,Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    background-color: black;
+    background:black;
+
+
+    /* background: linear-gradient(129deg, rgba(2,43,82,1) 28%, rgba(57,76,98,1) 57%); */
+    background: -webkit-linear-gradient(360deg,#949494 10%,#efefef 360%); 
+    background: linear-gradient(360deg,#949494 10%,#efefef 360%);
+
+
+}
+
+
+
+.svgClass
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.ben{
+    width: 100%;
+}

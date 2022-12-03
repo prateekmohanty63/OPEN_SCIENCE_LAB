@@ -1,0 +1,298 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expirement</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+      <link rel="stylesheet" href="{% static 'css/expirement.css' %}">
+
+      <style>
+         .button-container {
+         width: 520px;
+         background: gray;
+         overflow-y: auto;
+     }
+     
+     .button-container > a {
+         width: 100px;
+         height: 100px;
+         float: left;
+         background: lightgray;   
+         margin: 15px;
+         text-align: center;
+     }
+
+     .button{
+
+  background-color: #d7d7d7;
+  box-shadow: 3px 5px 5px #888888;
+  border-radius: 2px;
+  transition: all 1s ease;
+  transform: scale(1);
+  border-radius: 2px;
+}
+     .button:hover{
+        cursor: pointer;
+        background-color:yellowgreen;
+/*  Making button bigger on hover  */
+  transform: scale(1.2) perspective(1px)
+     }
+
+.tube{
+   color: red;
+}
+
+.menu-container{
+
+   display: flex;
+   justify-content: end;
+}
+
+     </style>
+      
+</head>
+<body>
+
+   <div class="container">
+      <!-- <button
+         style="padding: 0.6em 1em; margin: 0.5em; position: sticky; top: 0; right: 0; transform: translateX(700%);">
+         <img src="{% static 'img/playButton-1.png' %}" style="height: 1rem; width: 1rem;" alt="">
+            GET STARTED
+      </button> -->
+
+      <!-- <img src="{% static 'img/playButton-1.png' %}" style="margin-right: 1.5rem;" alt=""> -->
+
+      <header class="jumbotron subhead" id="overview"
+         style="border: black;background:linear-gradient(129deg, rgba(2,43,82,1) 28%, rgba(57,76,98,1) 57%);display: flex;justify-content: space-around;">
+
+         <!-- <p class="lead">Indian Institute of Science </p> -->
+           <!-- <img src="{% static 'img/logoFinal.jpg' %}" alt="" width="20%" height="10%" style="display: flex;justify-content: flex-start;"> -->
+         <h1 style="  font-family: 'Times New Roman', Times, serif;">Open Science lab</h1>
+         <!-- <img src="{% static 'img/logoFinal.jpg' %}" alt=""> -->
+         
+      </header>
+      <div class="masthead" style="border: black;">
+         <div class="navbar" style="border: black;">
+            <div class="navbar-inner" style="border: black;">
+               <div class="container" style="border: black;">
+                  <ul class="nav" style="margin-top: 0;">
+                     <li
+                        style="background:linear-gradient(129deg, rgba(2,43,82,1) 28%, rgba(16,59,110,1) 75%);border:none ;margin: 2rem;">
+                        <a href="{% url 'work' %}"> <span style="color: white;">HOW THE OSL WORKS</span> </a>
+                     </li>
+                     <li
+                        style="background:linear-gradient(129deg, rgba(2,43,82,1) 28%, rgba(16,59,110,1) 75%); border:none ;margin: 2rem;">
+                        <a href="{% url 'use' %}"><span style="color: white;padding: 1rem;">WHY USE OSL</span></a>
+                     </li>
+
+                     <li
+                        style="background:linear-gradient(129deg, rgba(2,43,82,1) 28%, rgba(16,59,110,1) 75%);border: none;">
+                        <a href="{% url 'instrumentation' %}"><span style="color: white;">ANALYTICAL
+                              INSTRUMENTATION</span> </a>
+                     </li>
+                     
+                     <!-- <li style="background:linear-gradient(129deg, rgba(2,43,82,1) 28%, rgba(16,59,110,1) 75%); box-shadow: 5px 5px 0.5px black;"><a
+                           style="display: flex; justify-content: center; align-items: center; "
+                           href="{% url 'instrumentation' %}">
+                           <img src="{% static 'img/play.svg' %}" style="height: 1rem; width: 1rem; color: white;" alt="">
+
+                           <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
+                              text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
+                              clip-rule="evenodd" viewBox="0 0 512 512"  style="height: 1rem; width: 1rem; margin: 0; color: white;">
+                              <path fill-rule="nonzero" fill="#fffff"
+                                 d="M255.99 0c70.68 0 134.7 28.66 181.02 74.98C483.33 121.3 512 185.31 512 256c0 70.68-28.67 134.69-74.99 181.01C390.69 483.33 326.67 512 255.99 512S121.3 483.33 74.98 437.01C28.66 390.69 0 326.68 0 256c0-70.67 28.66-134.7 74.98-181.02C121.3 28.66 185.31 0 255.99 0zm77.4 269.81c13.75-8.88 13.7-18.77 0-26.63l-110.27-76.77c-11.19-7.04-22.89-2.9-22.58 11.72l.44 154.47c.96 15.86 10.02 20.21 23.37 12.87l109.04-75.66zm79.35-170.56c-40.1-40.1-95.54-64.92-156.75-64.92-61.21 0-116.63 24.82-156.74 64.92-40.1 40.11-64.92 95.54-64.92 156.75 0 61.22 24.82 116.64 64.92 156.74 40.11 40.11 95.53 64.93 156.74 64.93 61.21 0 116.65-24.82 156.75-64.93 40.11-40.1 64.93-95.52 64.93-156.74 0-61.22-24.82-116.64-64.93-156.75z" />
+                           </svg>
+                           <span style="color: white;">GET STARTED</span>
+                        </a></li> -->
+                     <li style="background-color:#08c; margin-left: 10px; padding: 1rem;">
+                        <a href="{% url 'expirement' %}">
+                        <img src="{% static 'img/playButton-1.png' %}" style="height: 2rem; width: 2rem; " alt="">
+                        <span style="color: white; margin-left: 6px;">GET STARTED</span>
+                     </a>
+                     </li>
+
+
+                     <!-- <li><a href="{% url 'expirement' %}">Expirement</a></li>
+                           <li><a href="{% url 'publication' %}">Publications</a></li>
+                           <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                           <li><a href="{% url 'news' %}">News</a></li>
+                           <li><a href="{% url 'teaching' %}">Teaching</a></li>
+                           <li><a href="{% url 'contact' %}">Contact</a></li> -->
+
+                     <!-- <li style="background-color: black; height: 3rem;">
+
+                              
+                           </li> -->
+
+
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      {% for message in messages %}
+          <h3 style="margin: 1em; color:red;" class="msg">{{message}}</h3>
+          {% endfor %}
+   
+      
+    
+           <fieldset>
+            <legend class="lab">VIRTUAL LAB</legend>
+            <div id="form-wrapper">
+        <form action="" method="POST" class="indForm" id="eform">
+            {% csrf_token %}
+            
+            <div id="iform">
+    
+                <label for="ingredient">Ingredient: </label>
+            <input type="text" name="ingredient1">
+            <br><br>
+            <label for="amt">Amount</label>
+            <input type="number" step="0.1" id="amt" name="amt1">
+            <br>
+        </div>
+
+        <div class="menu-container">
+         <div class="button-container">
+ 
+         <!-- <p class="tube">Test Tube Stand</p> -->
+             <a href="#" class="button" id="btn1" onclick="click1(event)">Slot1</a>
+            <a  class="button" id="btn2" onclick="click2(event)">Slot2</a>
+            <a  class="button" id="btn3" onclick="click3(event)">Slot3</a>
+            <a  class="button" id="btn4" onclick="click4(event)">Slot4</a>
+            <a  class="button" id="btn5" onclick="click5(event)">Slot5</a>
+            <a  class="button" id="btn5" onclick="click6(event)">Slot6</a>
+            <a  class="button" id="btn5" onclick="click7(event)">Slot7</a>
+            <a class="button" id="btn5" onclick="click8(event)">Slot8</a>
+         </div>
+     </div>
+
+            <button type="button" class="ind" onclick="addField(event)">Add Ingredient </button>
+            <button type="button" class="ind">Replace </button>
+
+            <input type="number" name="ninputs"  id="ninputs" style="display: none;">
+            <input type="number" name="slot"  id="slot" style="display: none;">
+    
+            <input type="submit" value="Perform expirement" class="btn">
+
+            <a href="{% url 'demo' %}" style="color: red;text-decoration:node;">SAMPLE EXPIRMENT</a>
+        </form>
+        </div>
+
+      
+  
+    
+</div>
+</fieldset>
+
+<footer id="footer">
+    <div class="container-fluid">
+       <div class="row-fluid">
+          <div class="span5">
+             <h3>Contact Information</h3>
+             <p><b>Office Hours: </b>Monday-Friday (8.00am - 5.00pm)</p>
+             <p><b>Phone: </b>999-999-9999</p>
+             <p><b>Cell: </b>999-999-9999</p>
+             <a href="mailto:your.email@uni.edu">Email</a>
+          </div>
+          <div class="span2">
+             <a href="https://mybrandnewlogo.com/"><img src = "{% static 'images/finalLogo.png' %}" alt="research-lab-logo"/></a>
+          </div>
+          <div class="span5">
+             <h3>Address</h3>
+             <p>9999 Generic Research Laboratory<br>
+                999 Fake Street Avenue<br>
+                City, State<br>
+                Country ZIP
+             </p>
+             <a href="http://maps.google.com/">Show Map</a>
+          </div>
+       </div>
+    </div>
+ </footer>
+
+ <script>
+
+var dest='0';
+   
+   function click1(event)
+   {
+       event.preventDefault();
+       dest='1';
+       console.log(dest)
+       document.getElementById('slot').value=dest
+       console.log("Inside script")
+      // return false
+   }
+   function click2(event)
+   {
+       event.preventDefault();
+       dest='2';
+      //  console.log(dest)
+       document.getElementById('slot').value=dest
+       //return false
+   }
+
+   function click3(event)
+   {
+       event.preventDefault();
+       dest='3';
+      //  console.log(dest)
+       document.getElementById('slot').value=dest
+       //return false
+   }
+   function click4(event)
+   {
+       event.preventDefault();
+       dest='4';
+      //  console.log(dest)
+       document.getElementById('slot').value=dest
+       //return false
+   }
+   function click5(event)
+   {
+       event.preventDefault();
+       dest='5';
+      //  console.log(dest)
+       document.getElementById('slot').value=dest
+       //return false
+   }
+ 
+   function click6(event)
+   {
+       event.preventDefault();
+       dest='6';
+      // console.log(dest)
+      document.getElementById('slot').value=dest
+     //return false
+   }
+ 
+   function click7(event)
+   {
+       event.preventDefault();
+       dest='7';
+   //   console.log(dest)
+     document.getElementById('slot').value=dest
+      //return false
+   }
+ 
+   function click8(event)
+   {
+       event.preventDefault();
+       dest='8';
+      //  console.log(dest)
+       document.getElementById('slot').value=dest
+       //return false
+   }
+ </script>
+ <!-- <script src="{% static 'js/reg.js' %}"></Script> -->
+<script src="{% static 'js/expirement.js' %}"></script>
+</body>
+</html>
