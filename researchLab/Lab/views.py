@@ -330,3 +330,6 @@ def work1(request):
 
 def use1(request):
    return render(request,'use-1.html')
+
+def research1(request):
+   return render(request,'instrumentation-1.html')
