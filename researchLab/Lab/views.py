@@ -157,11 +157,6 @@ def expirement(request):
 
       q=[]
 
-
-
-      client=mqtt.Client()
-   
-      client.connect("broker.mqttdashboard.com", 1883, 60)
       
 
    
@@ -199,11 +194,7 @@ def expirement(request):
          q.append(amount)
 
 
-         msg = ingrident
-         client.publish('charan/1', payload=msg, qos=0, retain=False)
-
-         msg =amount
-         client.publish('charan/1', payload=msg, qos=0, retain=False)
+      q.append(slot)
 
        # setting up redis queue
       if not request.session.session_key:
@@ -290,29 +281,40 @@ def dequeue(request):
       for i in range(0,len(q),2):
          payload=payload+queue.get_jobs()[0].args[0][i]+" "
       
-      print(payload)
-      
+     
       
     
+     
       
-      #print(payload)
+      # publishing the ingridents
 
       client=mqtt.Client()
    
       client.connect("broker.mqttdashboard.com", 1883, 60)
 
       client.publish('prateek1', payload=payload, qos=0, retain=False)
+      
+
+       # publishing the quantities
 
 
       payload=""
       for i in range(1,len(q),2):
          payload=payload+queue.get_jobs()[0].args[0][i]+" "
       
-      print(payload)
-
+    
       client.publish('prateek1', payload=payload, qos=0, retain=False)
 
     
+     
+
+      slot=""
+
+      slot=slot+queue.get_jobs()[0].args[0][-1]
+      print(slot)
+
+      client.publish('prateek1', payload=payload, qos=0, retain=False)
+
       # queue.pop_job_id()
    
 
