@@ -236,21 +236,21 @@ def expirement(request):
       messages.info(request,'Your expirement was been added to the queue , we will reach back to you once the results are ready')
 
       # email sending
-      userSubject = "Reference for your expirement "
-      userBody = ("Hi "+user.username+
-                  "\n\nYour expirement has been successfully added to the queue"+
-                  "\n\n Expirement-id: "+jobid+
-                  "\n\n slot choosen: "+slot+
-                  "\n\n reactants given: "+reactants+
-                  "\n\n we will let you know once the results are ready"
-                )
-      useremail = send_mail (
-                userSubject,
-                userBody,
-                "prateekmohanty63@gmail.com",
-                ['prateekmohanty63@gmail.com'],
-                fail_silently=False
-        )
+      # userSubject = "Reference for your expirement "
+      # userBody = ("Hi "+user.username+
+      #             "\n\nYour expirement has been successfully added to the queue"+
+      #             "\n\n Expirement-id: "+jobid+
+      #             "\n\n slot choosen: "+slot+
+      #             "\n\n reactants given: "+reactants+
+      #             "\n\n we will let you know once the results are ready"
+      #           )
+      # useremail = send_mail (
+      #           userSubject,
+      #           userBody,
+      #           "prateekmohanty63@gmail.com",
+      #           ['prateekmohanty63@gmail.com'],
+      #           fail_silently=False
+      #   )
 
 
 
@@ -278,14 +278,19 @@ def dequeue(request):
 
       
 
-      print(queue.get_job_ids(0))
-      print(queue.get_jobs()[0].args[0])
+      # print(queue.get_job_ids(0))
+      jobId=queue.get_job_ids()[0]
+      print(jobId)
+     
+      # print(queue.get_jobs()[0].args[0])
 
       q=queue.get_jobs()[0].args[0]
 
       payload=""
       for i in range(0,len(q),2):
-         payload=payload+queue.get_jobs()[0].args[0][i]
+         payload=payload+queue.get_jobs()[0].args[0][i]+" "
+      
+      queue.pop_job_id()
       
       print(payload)
 
@@ -293,7 +298,7 @@ def dequeue(request):
    
       client.connect("broker.mqttdashboard.com", 1883, 60)
 
-      client.publish('aniket', payload=payload, qos=0, retain=False)
+      client.publish('prateek1', payload=payload, qos=0, retain=False)
 
 
      # print(queue.pop_job_id())
