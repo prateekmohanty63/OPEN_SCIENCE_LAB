@@ -280,7 +280,7 @@ def dequeue(request):
 
       # print(queue.get_job_ids(0))
       jobId=queue.get_job_ids()[0]
-      print(jobId)
+      #print(jobId)
      
       # print(queue.get_jobs()[0].args[0])
 
@@ -290,9 +290,12 @@ def dequeue(request):
       for i in range(0,len(q),2):
          payload=payload+queue.get_jobs()[0].args[0][i]+" "
       
-      queue.pop_job_id()
-      
       print(payload)
+      
+      
+    
+      
+      #print(payload)
 
       client=mqtt.Client()
    
@@ -301,7 +304,18 @@ def dequeue(request):
       client.publish('prateek1', payload=payload, qos=0, retain=False)
 
 
-     # print(queue.pop_job_id())
+      payload=""
+      for i in range(1,len(q),2):
+         payload=payload+queue.get_jobs()[0].args[0][i]+" "
+      
+      print(payload)
+
+      client.publish('prateek1', payload=payload, qos=0, retain=False)
+
+    
+      # queue.pop_job_id()
+   
+
 
       return render(request,'index.html')
 
