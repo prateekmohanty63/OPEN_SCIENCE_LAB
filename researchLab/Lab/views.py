@@ -315,7 +315,7 @@ def dequeue(request):
 
       client.publish('prateek1', payload=payload, qos=0, retain=False)
 
-      # queue.pop_job_id()
+      queue.pop_job_id()
    
 
 
