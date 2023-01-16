@@ -20,6 +20,9 @@ urlpatterns=[
     path('logout/',views.logout,name="logout"),
     path('dequeue/',views.dequeue,name='dequeue'),
 
+    # peak from the queue
+    path('peak/',views.peak,name='peak'),
+
 
      # refined pages
      path('work1/',views.work1,name='work1'),

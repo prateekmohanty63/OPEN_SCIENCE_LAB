@@ -17,6 +17,10 @@ import struct
 import time
 import paho.mqtt.client as mqtt
 
+# cloudmpq
+import pika,json
+from .producer import publish
+
 
 # redis
 import redis
@@ -251,25 +255,18 @@ def expirement(request):
    return render(request,'expirements.html')
 
 
+def peak(request):
 
-def dequeue(request):
-
-   if(request.method=='GET'):
-      return render(request,'dequeueTest.html')
-
-   if(request.method=="POST"):
-       # setting up redis queue
-      if not request.session.session_key:
-        request.session.save()
-      session_id = request.session.session_key
-
-      redis_cache=caches['default']
+   if request.method=="GET":
+      return render(request,'peakTest.html')
+   
+   elif request.method=="POST":
 
       queue=django_rq.get_queue('default')
 
       
 
-      # print(queue.get_job_ids(0))
+   # print(queue.get_job_ids(0))
       jobId=queue.get_job_ids()[0]
       #print(jobId)
      
@@ -277,44 +274,52 @@ def dequeue(request):
 
       q=queue.get_jobs()[0].args[0]
 
-      payload=""
-      for i in range(0,len(q),2):
-         payload=payload+queue.get_jobs()[0].args[0][i]+" "
-      
-     
-      
-    
-     
-      
       # publishing the ingridents
-
-      client=mqtt.Client()
-   
-      client.connect("broker.mqttdashboard.com", 1883, 60)
-
-      client.publish('prateek1', payload=payload, qos=0, retain=False)
-      
-
-       # publishing the quantities
-
-
       payload=""
+      for i in range(0,len(q)-1,2):
+
+       payload=payload+queue.get_jobs()[0].args[0][i]+" "
+      
+      payload=payload+" ,"
+
+      # publishing the quantities
+
+
       for i in range(1,len(q),2):
          payload=payload+queue.get_jobs()[0].args[0][i]+" "
-      
-    
-      client.publish('prateek1', payload=payload, qos=0, retain=False)
 
-    
+      payload=payload+" ,"
+
+
+      payload=payload+queue.get_jobs()[0].args[0][-1]
+
+      print(payload)  
+      
+      res={'expirement':payload}
+      
+  
+      publish('peak_value',res)
+
+      return HttpResponse('peaked')
+   
+
+
+def dequeue(request):
+
+
+   
+       # setting up redis queue
+   if not request.session.session_key:
+
+      request.session.save()
+      session_id = request.session.session_key
+
+      redis_cache=caches['default']
+
+      queue=django_rq.get_queue('default')
      
 
-      slot=""
-
-      slot=slot+queue.get_jobs()[0].args[0][-1]
-      print(slot)
-
-      client.publish('prateek1', payload=payload, qos=0, retain=False)
-
+    
       queue.pop_job_id()
    
 
