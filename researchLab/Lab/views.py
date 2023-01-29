@@ -359,3 +359,110 @@ def use1(request):
 
 def research1(request):
    return render(request,'instrumentation-1.html')
+
+def expirement1(request):
+
+   if request.method=="POST":
+      
+        # Checking weather the user is signed in or not
+      if not request.user.is_authenticated:
+       messages.error(request, "Please sign in ")
+       return redirect('testExpirement-1.html')
+      
+      user = User.objects.all().filter(username=request.user.username).get()
+
+      q=[]
+
+      
+
+   
+
+      ninputs=request.POST['ninputs']
+      
+      if ninputs!='':
+         n=int(ninputs)
+      else:
+         n=2
+   
+
+      slot=request.POST['slot']
+    
+
+      if slot=='':
+         messages.info(request,'Please select the slot of test tube')
+         return redirect('expirement')
+      
+      # conveting the request.POST into json format
+      s1 = json.dumps(request.POST)
+      item = json.loads(s1)
+      # print(item)
+
+      count=0
+      
+      
+      for i in range(n-1):
+         ingrident=request.POST['ingredient'+str(i+1)]
+         #print(ingrident)
+         q.append(ingrident)
+
+         amount=request.POST['amt'+str(i+1)]
+         #print(amount)
+         q.append(amount)
+
+
+      q.append(slot)
+
+       # setting up redis queue
+      if not request.session.session_key:
+        request.session.save()
+      session_id = request.session.session_key
+
+      redis_cache=caches['default']
+
+      queue=django_rq.get_queue('default')
+
+      queue.enqueue(add_queue,q)
+
+      print(queue.get_job_ids(0))
+
+      jobid=queue.get_job_ids(0)[-1]
+
+      print(jobid)
+      
+      
+      reactants=""
+
+      for i in range(0,len(q),2):
+         reactants=reactants+q[i]+" "
+      
+      print(reactants)
+
+      
+
+     
+      messages.info(request,'Your expirement was been added to the queue , we will reach back to you once the results are ready')
+
+      # email sending
+      # userSubject = "Reference for your expirement "
+      # userBody = ("Hi "+user.username+
+      #             "\n\nYour expirement has been successfully added to the queue"+
+      #             "\n\n Expirement-id: "+jobid+
+      #             "\n\n slot choosen: "+slot+
+      #             "\n\n reactants given: "+reactants+
+      #             "\n\n we will let you know once the results are ready"
+      #           )
+      # useremail = send_mail (
+      #           userSubject,
+      #           userBody,
+      #           "prateekmohanty63@gmail.com",
+      #           ['prateekmohanty63@gmail.com'],
+      #           fail_silently=False
+      #   )
+
+
+
+      return redirect('index')
+
+
+   return render(request,'testExpirement-1.html')
+   
