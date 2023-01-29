@@ -22,12 +22,12 @@ var i=2;
 
        var label1=document.createElement('label')
        label1.setAttribute('for','amt'+i)
-       label1.innerHTML="Amount"
+       label1.innerHTML="Amount(g)"
        div.appendChild(label1)
 
 
        var amt=document.createElement('input')
-       amt.setAttribute('type','number')
+       amt.setAttribute('type','text')
        amt.setAttribute('name','amt'+i)
        div.appendChild(amt)
       
@@ -42,6 +42,8 @@ var i=2;
        i++;
 
        document.getElementById('ninputs').value=i;
+
+      
     }
 
 
@@ -51,9 +53,12 @@ var i=2;
     {
         event.preventDefault();
         dest+='1';
-        console.log(dest)
+      
         document.getElementById('slot').value=dest
         console.log("Inside js")
+
+       
+     
        // return false
     }
     function click2(event)
@@ -61,6 +66,8 @@ var i=2;
         event.preventDefault();
         dest+='2';
         document.getElementById('slot').value=dest
+
+        document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
         //return false
     }
 
@@ -69,6 +76,8 @@ var i=2;
         event.preventDefault();
         dest+='3';
         document.getElementById('slot').value=dest
+
+        document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
         //return false
     }
     function click4(event)
@@ -76,6 +85,8 @@ var i=2;
         event.preventDefault();
         dest+='4';
         document.getElementById('slot').value=dest
+
+        document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
         //return false
     }
     function click5(event)
@@ -84,6 +95,8 @@ var i=2;
         dest+='5';
         console.log(dest)
         document.getElementById('slot').value=dest
+
+        document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
         //return false
     }
   
@@ -92,6 +105,8 @@ var i=2;
         event.preventDefault();
         dest+='6';
         document.getElementById('slot').value=dest
+
+        document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
       //   console.log(dest)
       //return false
     }
@@ -101,6 +116,8 @@ var i=2;
         event.preventDefault();
         dest+='7';
         document.getElementById('slot').value=dest
+
+        document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
      //   console.log(dest)
        //return false
     }
@@ -111,6 +128,8 @@ var i=2;
         dest+='8';
         console.log(dest)
         document.getElementById('slot').value=dest
+
+        document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
         //return false
     }
   

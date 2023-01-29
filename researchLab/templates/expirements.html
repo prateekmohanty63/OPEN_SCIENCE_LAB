@@ -53,6 +53,10 @@
    display: flex;
    justify-content: end;
 }
+#expDisplay{
+   margin-left:50%;
+   margin-bottom: 10%;
+}
 
      </style>
       
@@ -142,7 +146,7 @@
           {% endfor %}
    
       
-    
+ 
            <fieldset>
             <legend class="lab">VIRTUAL LAB</legend>
             <div id="form-wrapper">
@@ -154,13 +158,24 @@
                 <label for="ingredient">Ingredient: </label>
             <input type="text" name="ingredient1">
             <br><br>
-            <label for="amt">Amount</label>
-            <input type="number" step="0.1" id="amt" name="amt1">
+            <label for="amt">Amount(g)</label>
+            <input type="text" step="0.1" id="amt" name="amt1">
             <br>
         </div>
 
+
+
+        <!-- TextBox for expirement -->
+
+       
+
+        <textarea id="expText"></textarea>
+
+        <div id="expDisplay" style="color:yellowgreen; font-size:x-large"></div>
         <div class="menu-container">
-         <div class="button-container">
+        
+         
+         <div class="button-container" style="position:absolute;">
  
          <!-- <p class="tube">Test Tube Stand</p> -->
              <a href="#" class="button" id="btn1" onclick="click1(event)">Slot1</a>
@@ -171,10 +186,17 @@
             <a  class="button" id="btn5" onclick="click6(event)">Slot6</a>
             <a  class="button" id="btn5" onclick="click7(event)">Slot7</a>
             <a class="button" id="btn5" onclick="click8(event)">Slot8</a>
+            
          </div>
+
+         
      </div>
 
+
+
             <button type="button" class="ind" onclick="addField(event)">Add Ingredient </button>
+            <button type="button" class="ind" onclick="DisplayReaction(event)">Add Expirement </button>
+            
             <button type="button" class="ind">Replace </button>
 
             <input type="number" name="ninputs"  id="ninputs" style="display: none;">
@@ -220,15 +242,29 @@
 
  <script>
 
+    
+
 var dest='0';
+
+   function DisplayReaction(event)
+   {
+      event.preventDefault();
+      var val=document.getElementById('expText').value
+      console.log(val)
+      document.getElementById('expDisplay').innerHTML+=val
+      
+   }
    
    function click1(event)
    {
        event.preventDefault();
        dest='1';
-       console.log(dest)
+      
        document.getElementById('slot').value=dest
        console.log("Inside script")
+       
+     
+     
       // return false
    }
    function click2(event)
@@ -237,6 +273,7 @@ var dest='0';
        dest='2';
       //  console.log(dest)
        document.getElementById('slot').value=dest
+       document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
        //return false
    }
 
@@ -246,6 +283,7 @@ var dest='0';
        dest='3';
       //  console.log(dest)
        document.getElementById('slot').value=dest
+       document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
        //return false
    }
    function click4(event)
@@ -254,6 +292,7 @@ var dest='0';
        dest='4';
       //  console.log(dest)
        document.getElementById('slot').value=dest
+       document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
        //return false
    }
    function click5(event)
@@ -262,6 +301,7 @@ var dest='0';
        dest='5';
       //  console.log(dest)
        document.getElementById('slot').value=dest
+       document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
        //return false
    }
  
@@ -271,6 +311,7 @@ var dest='0';
        dest='6';
       // console.log(dest)
       document.getElementById('slot').value=dest
+      document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
      //return false
    }
  
@@ -280,6 +321,7 @@ var dest='0';
        dest='7';
    //   console.log(dest)
      document.getElementById('slot').value=dest
+     document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
       //return false
    }
  
