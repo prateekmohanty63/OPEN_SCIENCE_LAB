@@ -327,6 +327,9 @@ def dequeue(request):
       redis_cache=caches['default']
 
       queue=django_rq.get_queue('default')
+
+      if queue.is_empty():
+         return HttpResponse('Queue is empty . No expirements to Dequeue')
      
 
     
