@@ -367,7 +367,7 @@ def expirement1(request):
         # Checking weather the user is signed in or not
       if not request.user.is_authenticated:
        messages.error(request, "Please sign in ")
-       return redirect('testExpirement-1.html')
+       return redirect('index')
       
       user = User.objects.all().filter(username=request.user.username).get()
 
