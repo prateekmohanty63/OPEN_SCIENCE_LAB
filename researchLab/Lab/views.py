@@ -266,6 +266,11 @@ def peak(request):
    if request.method=="GET":
 
       queue=django_rq.get_queue('default')
+      
+
+      if queue.is_empty():
+         return HttpResponse("Queue is empty !!!")
+
 
       
 
