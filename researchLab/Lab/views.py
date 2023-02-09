@@ -9,6 +9,7 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 import json
 from django.core.mail import send_mail
+from django.http import JsonResponse
 
 # mqtt
 from pyPS4Controller.controller import Controller
@@ -263,9 +264,6 @@ def expirement1(request):
 def peak(request):
 
    if request.method=="GET":
-      return render(request,'peakTest.html')
-   
-   elif request.method=="POST":
 
       queue=django_rq.get_queue('default')
 
@@ -303,9 +301,11 @@ def peak(request):
       res={'expirement':payload}
       
   
-      publish('peak_value',res)
+      publish('peak_value',payload)
 
-      return HttpResponse('peaked')
+      return JsonResponse(res)
+   
+  
    
 
 
