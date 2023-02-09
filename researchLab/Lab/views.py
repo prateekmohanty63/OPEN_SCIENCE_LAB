@@ -311,13 +311,13 @@ def peak(request):
 
 def dequeue(request):
 
+# setting up redis queue
+   if request.method=="GET":
 
-   
-       # setting up redis queue
-   if not request.session.session_key:
+      # if not request.session.session_key:
 
-      request.session.save()
-      session_id = request.session.session_key
+      #    request.session.save()
+      #    session_id = request.session.session_key
 
       redis_cache=caches['default']
 
@@ -329,7 +329,8 @@ def dequeue(request):
    
 
 
-      return render(request,'index.html')
+      return HttpResponse('Expirement dequeued')
+   # return HttpResponse('Expirement dequeued')
 
 
 
