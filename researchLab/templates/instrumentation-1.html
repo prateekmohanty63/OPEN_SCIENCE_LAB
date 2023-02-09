@@ -21,7 +21,7 @@
               <a class="link-secondary" href="#">Subscribe</a>
             </div>
             <div class="col-4 text-center">
-              <a class="blog-header-logo text-dark" href="#">Large</a>
+              <a class="blog-header-logo text-dark" href="#"></a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
               <a class="link-secondary" href="#" aria-label="Search">
@@ -34,21 +34,20 @@
       
         <div class="nav-scroller py-1 mb-2">
           <nav class="nav d-flex justify-content-between">
-            <a class="p-2 link-secondary" href="#">HOME</a>
-            <a class="p-2 link-secondary" href="#">HOW THE OSL WORKS</a>
-            <a class="p-2 link-secondary" href="#">WHY USE OSL</a>
-            <a class="p-2 link-secondary" href="#">ANALYTICAL INSTRUMENTATION</a>
-            <a class="p-2 link-secondary" href="#">GET STARTED</a>
-            <a class="p-2 link-secondary" href="#">REGISTER</a>
-
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}">LOGOUT</a></li> 
-            
-             {% else %}
-             <li><a href="{% url 'login' %}">LOGIN</a></li>
-             
-             {% endif %}
-           
+            <li class="active"><a href="{% url 'index' %}">HOME</a></li>
+            <li><a href="{% url 'work1' %}">HOW THE OSL WORKS</a></li>
+            <li><a href="{% url 'use1' %}">WHY USE OSL</a></li>
+            <li><a href="{% url 'instrumentation1' %}">ANALYTICAL INSTRUMENTATION</a></li>
+            <li><a href="{% url 'expirement1' %}">GET STARTED</a></li>
+            <li><a href="{% url 'registration' %}">REGISTER</a></li>		
+                
+                 {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">LOGOUT</a></li> 
+                
+                 {% else %}
+                 <li><a href="{% url 'login' %}">LOGIN</a></li>
+                 
+                 {% endif %}
           </nav>
         </div>
       </div>
