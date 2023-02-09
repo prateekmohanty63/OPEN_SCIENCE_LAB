@@ -15,10 +15,7 @@
   </head>
   <body>
 
-    {% for message in messages %}
-    <h3 style="margin: 1em; color:red;" class="msg">{{message}}</h3>
-    {% endfor %}
-
+   
     
     <!-- Sing in  Form -->
     <section class="sign-in">
@@ -66,7 +63,10 @@
   </section>
 
 
-      
+  {% for message in messages %}
+  <h1 style="margin: 1em; color:red;" class="msg">{{message}}</h1>
+  {% endfor %}
+
     
 
     <!-- Optional JavaScript -->
