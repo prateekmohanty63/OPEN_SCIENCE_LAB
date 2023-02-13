@@ -1,0 +1,39 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+form{
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.exp{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 20rem;
+    
+}
+.btn{
+    width: 10rem;
+    height: 2.5rem;
+    margin: 2.5rem;
+    border-radius: 1.5rem;
+}
+.btn:hover{
+    color: black;
+    background-color: blanchedalmond;
+    cursor: pointer;
+}
+.lab{
+    color: red;
+    margin: 2rem;
+}
+.ind{
+margin: 2rem;
+width: 8rem;
+height: 2rem;
+}

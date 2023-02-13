@@ -1,0 +1,48 @@
+
+
+body {
+    margin: 0;
+    font-family: Ringside Narrow,Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: white;
+    background-color:black;
+
+    /* background: linear-gradient(129deg, rgba(2,43,82,1) 28%, rgba(57,76,98,1) 57%); */
+
+
+
+}
+
+.masthead{
+    background-color:rgb(22, 25, 28) ;
+}
+
+.mainClass{
+    display: flex;
+    flex-direction: row;
+}
+
+svg{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 4rem;
+}
+
+.goal{
+    margin: 4rem;
+}
+
+.container .nav .navbar-inner .masthead{
+    background-color:rgb(22, 25, 28) ;
+}
+
+nav li{
+    background-color: rgb(22, 25, 28);
+}
+
+.logoImg{
+    width: 2rem;
+    height: 2rem;
+}
