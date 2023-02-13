@@ -1,7 +1,5 @@
 from dataclasses import field
 from pickle import TRUE
-from tkinter import Widget
-from tkinter.ttk import Style
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
