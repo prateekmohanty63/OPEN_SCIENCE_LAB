@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Lab',
     'crispy_forms',
-    'corsheaders',
     'whitenoise.runserver_nostatic',
 
     # reddis settings
