@@ -19,7 +19,6 @@ pytz==2022.5
 redis==4.3.4
 rq==1.11.1
 sqlparse==0.4.2
+tk==0.1.0
 whitenoise==6.3.0
 wrapt==1.14.1
-gunicorn
-whitenoise
