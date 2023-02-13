@@ -256,9 +256,10 @@ def expirement1(request):
 
 
       return redirect('index')
-
-
-   return render(request,'testExpirement-1.html')
+   
+   context={'beakers':[1,2,3]}
+   
+   return render(request,'testExpirement-1.html',context)
 
 
 def peak(request):

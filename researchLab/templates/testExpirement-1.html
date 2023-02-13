@@ -209,6 +209,7 @@ form input{
         <div class="menu-container">
         
          
+          <!-- test-tube slot design -->
             <div class="button-container" style="position:absolute;">
     
             <!-- <p class="tube">Test Tube Stand</p> -->
@@ -216,16 +217,48 @@ form input{
                <a  class="button" id="btn2" onclick="click2(event)">Slot2</a>
                <a  class="button" id="btn3" onclick="click3(event)">Slot3</a>
                <a  class="button" id="btn4" onclick="click4(event)">Slot4</a>
-               <a  class="button" id="btn5" onclick="click5(event)">Slot5</a>
+               <!-- <a  class="button" id="btn5" onclick="click5(event)">Slot5</a>
                <a  class="button" id="btn5" onclick="click6(event)">Slot6</a>
                <a  class="button" id="btn5" onclick="click7(event)">Slot7</a>
-               <a class="button" id="btn5" onclick="click8(event)">Slot8</a>
+               <a class="button" id="btn5" onclick="click8(event)">Slot8</a> -->
                
             </div>
    
             
         </div>
        
+
+         <!-- beaker slot design -->
+         <div class="button-container" style="position:absolute;">
+    
+          <!-- <p class="tube">Test Tube Stand</p> -->
+          {% for con in beakers %}
+
+          {% if con == 1 %}
+              <a href="#" class="button" id="btn1" onclick="click1(event)">Beaker 1</a>
+              {% endif %}
+
+              {% if con == 2 %}
+              <a href="#" class="button" id="btn1" onclick="click2(event)">Beaker 2</a>
+              {% endif %}
+              {% if con == 3 %}
+              <a href="#" class="button" id="btn1" onclick="click3(event)">Beaker 3</a>
+              {% endif %}
+
+              {% if con == 4 %}
+              <a href="#" class="button" id="btn1" onclick="click4(event)">Beaker 4</a>
+              {% endif %}
+          
+              {% endfor %}
+             <!-- <a  class="button" id="btn2" onclick="click2(event)">Slot2</a>
+             <a  class="button" id="btn3" onclick="click3(event)">Slot3</a>
+             <a  class="button" id="btn4" onclick="click4(event)">Slot4</a> -->
+             <!-- <a  class="button" id="btn5" onclick="click5(event)">Slot5</a>
+             <a  class="button" id="btn5" onclick="click6(event)">Slot6</a>
+             <a  class="button" id="btn5" onclick="click7(event)">Slot7</a>
+             <a class="button" id="btn5" onclick="click8(event)">Slot8</a> -->
+             
+          </div>
   
 
 
