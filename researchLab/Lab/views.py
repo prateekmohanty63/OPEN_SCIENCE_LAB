@@ -11,12 +11,21 @@ import json
 from django.core.mail import send_mail
 from django.http import JsonResponse
 
+import os
+import sys
+from django.core.files import File
+
 # mqtt
 from pyPS4Controller.controller import Controller
 import os
 import struct
 import time
 import paho.mqtt.client as mqtt
+import random
+from . import mqttConsumer
+
+
+
 
 # cloudmpq
 import pika,json
@@ -257,7 +266,11 @@ def expirement1(request):
 
       return redirect('index')
    
-   context={'beakers':[1,2,3]}
+   f = open('/home/prateek-mohanty/Desktop/Projects/IISC-PROJECT/researchLab/Lab/beaker.txt', 'r')
+   if f.mode == 'r':
+       contents =f.read()
+       print (contents)
+   context={'beakers':contents}
    
    return render(request,'testExpirement-1.html',context)
 
@@ -388,4 +401,6 @@ def research1(request):
    return render(request,'instrumentation-1.html')
 
 
-   
+
+
+
