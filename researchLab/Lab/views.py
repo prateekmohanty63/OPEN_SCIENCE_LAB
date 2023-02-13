@@ -22,7 +22,6 @@ import struct
 import time
 import paho.mqtt.client as mqtt
 import random
-from . import mqttConsumer
 
 
 
@@ -403,4 +402,15 @@ def research1(request):
 
 
 
+class VideoCamera(object):
+   def __init__(self):
+      pass
 
+   def __del__(self):
+      pass
+
+   def get_frame(self):
+      pass
+
+   def update(self):
+      pass

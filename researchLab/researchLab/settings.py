@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS=["*"]
 
-CORS_ORIGIN_ALLOW_ALL = True
+
 
 
 # Application definition
@@ -131,11 +131,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'assets')
-]
+# STATICFILES_DIRS=[
+#     os.path.join(BASE_DIR,'assets')
+# ]
 
-STATIC_ROOT=os.path.join(BASE_DIR,'static')
+# STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
 # redis cache
 CACHES = {
@@ -181,12 +181,13 @@ EMAIL_HOST_PASSWORD = 'ozudkymorpbsvrzi'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
 STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
-STATIC_ROOT=os.path.join(BASE_DIR,'assets')
+
 
 # ozudkymorpbsvrzi
