@@ -6,4 +6,3 @@ pika
 gunicorn
 whitenoise
 Pillow
-corsheaders
