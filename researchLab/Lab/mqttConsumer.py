@@ -12,7 +12,7 @@ q=queue.Queue(maxsize=6)
 
 
 
-broker = 'broker.mqttdashboard.com'
+broker = '10.156.248.197'
 port = 1883
 topic = "dropDown"
 # generate client ID with pub prefix randomly

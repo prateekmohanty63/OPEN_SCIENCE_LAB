@@ -233,8 +233,13 @@ form input{
     
           <!-- <p class="tube">Test Tube Stand</p> -->
           {% for con in beakers %}
+           
+          {% if con != "," %}
+          <a href="#" class="button" id="btn1" onclick="click1(event)">Beaker {{con}}</a>
 
-          {% if con == 1 %}
+          {% endif %}
+
+          <!-- {% if con == 1 %}
               <a href="#" class="button" id="btn1" onclick="click1(event)">Beaker 1</a>
               {% endif %}
 
@@ -247,7 +252,7 @@ form input{
 
               {% if con == 4 %}
               <a href="#" class="button" id="btn1" onclick="click4(event)">Beaker 4</a>
-              {% endif %}
+              {% endif %} -->
           
               {% endfor %}
              <!-- <a  class="button" id="btn2" onclick="click2(event)">Slot2</a>

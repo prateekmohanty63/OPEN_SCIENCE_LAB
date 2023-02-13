@@ -269,7 +269,11 @@ def expirement1(request):
    if f.mode == 'r':
        contents =f.read()
        print (contents)
-   context={'beakers':contents}
+       ls=contents.split()
+       print(ls)
+       
+      
+   context={'beakers':ls}
    
    return render(request,'testExpirement-1.html',context)
 
