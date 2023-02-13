@@ -404,7 +404,7 @@ def research1(request):
 
 class VideoCamera(object):
    def __init__(self):
-      print('hello')
+      print('hello1')
       pass
 
    def __del__(self):
