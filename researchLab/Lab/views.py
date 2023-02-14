@@ -209,6 +209,8 @@ def expirement1(request):
 
 
       q.append(testTubeslot)
+      q.append(beakerSlot)
+      q.append(pickPlace)
       q.append(reactionEq)
 
        # setting up redis queue
@@ -272,7 +274,7 @@ def expirement1(request):
       
 
       client=mqtt.Client()
-      client.connect("10.156.248.70", 1883, 60)
+      client.connect("10.156.248.197", 1883, 60)
       client.publish('ddu', payload=payload, qos=0, retain=False)
 
       return redirect('index')
