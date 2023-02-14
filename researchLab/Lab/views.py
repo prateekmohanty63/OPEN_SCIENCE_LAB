@@ -186,7 +186,7 @@ def expirement1(request):
 
       if slot=='':
          messages.info(request,'Please select the slot of test tube')
-         return redirect('expirement')
+         # return redirect('expirement')
       
       # conveting the request.POST into json format
       s1 = json.dumps(request.POST)
@@ -261,7 +261,11 @@ def expirement1(request):
       #           fail_silently=False
       #   )
 
+      beakerSlot=request.POST['beaker']
 
+      client=mqtt.Client()
+      client.connect("broker.mqttdashboard.com", 1883, 60)
+      client.publish('prateek1', payload=beakerSlot, qos=0, retain=False)
 
       return redirect('index')
    
@@ -383,8 +387,12 @@ def demo(request):
       client=mqtt.Client()
       client.connect("broker.mqttdashboard.com", 1883, 60)
       res=request.POST['res']
-      #print(res)
+      print(res)
       msg=res
+
+      if msg=='1':
+         return redirect('/expirement1')
+
       print(msg)
       client.publish('prateek1', payload=msg, qos=0, retain=False)
       return HttpResponse("Value given")
@@ -404,6 +412,21 @@ def research1(request):
    return render(request,'instrumentation-1.html')
 
 
+def beakerTest(request):
+
+   if request.method=="POST":
+      beakerSlot=request.POST['beaker']
+      print(beakerSlot)
+   f = open('/home/prateek-mohanty/Desktop/Projects/IISC-PROJECT/researchLab/Lab/beaker.txt', 'r')
+   if f.mode == 'r':
+       contents =f.read()
+      #  print (contents)
+       ls=contents.split()
+      #  print(ls)
+       
+      
+   context={'beakers':ls}
+   return render(request,'beakerTest.html',context)
 
 
 class VideoCamera(object):

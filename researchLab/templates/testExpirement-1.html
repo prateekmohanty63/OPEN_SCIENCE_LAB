@@ -230,31 +230,25 @@ form input{
 
          <!-- beaker slot design -->
          <div class="button-container" style="position:absolute;">
+
+          <select name="beaker" id="department" class="form-control">       
+            <option value="0">--Select Beaker Slot--</option>     
+            {% for beaker in beakers  %}
+            <option value="{{beaker}}">Beaker-{{beaker}}</option>
+            {% endfor %}
+        </select>
     
           <!-- <p class="tube">Test Tube Stand</p> -->
-          {% for con in beakers %}
+          <!-- {% for con in beakers %}
            
-          {% if con != "," %}
-          <a href="#" class="button" id="btn1" onclick="click1(event)">Beaker {{con}}</a>
+          {% if con != "[" %}
+          <a href="#" class="button" id="btn1" onclick="click1(event,con)">Beaker {{con}}</a>
 
           {% endif %}
 
-          <!-- {% if con == 1 %}
-              <a href="#" class="button" id="btn1" onclick="click1(event)">Beaker 1</a>
-              {% endif %}
-
-              {% if con == 2 %}
-              <a href="#" class="button" id="btn1" onclick="click2(event)">Beaker 2</a>
-              {% endif %}
-              {% if con == 3 %}
-              <a href="#" class="button" id="btn1" onclick="click3(event)">Beaker 3</a>
-              {% endif %}
-
-              {% if con == 4 %}
-              <a href="#" class="button" id="btn1" onclick="click4(event)">Beaker 4</a>
-              {% endif %} -->
+         
           
-              {% endfor %}
+              {% endfor %} -->
              <!-- <a  class="button" id="btn2" onclick="click2(event)">Slot2</a>
              <a  class="button" id="btn3" onclick="click3(event)">Slot3</a>
              <a  class="button" id="btn4" onclick="click4(event)">Slot4</a> -->

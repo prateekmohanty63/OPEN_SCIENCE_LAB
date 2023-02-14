@@ -49,10 +49,10 @@ var i=2;
 
     var dest='0';
    
-    function click1(event)
+    function click1(event,con)
     {
         event.preventDefault();
-        dest+='1';
+        dest+=con;
       
         document.getElementById('slot').value=dest
         console.log("Inside js")

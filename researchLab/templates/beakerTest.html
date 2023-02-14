@@ -1,0 +1,64 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DropDown</title>
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <h1><center>How to Create Cascading/Dependent Dropdown List in Django python</center></h1>
+
+  <div class="container">
+  <div class="card body">
+    <br/>
+    <br/>
+    <br/>
+   
+    <div class="row">
+    <div class="col-md-4">
+        
+        <form action="" method="POST" class="indForm" id="eform">
+            {% csrf_token %}
+        <select name="beaker" id="department" class="form-control">       
+            <option value="0">--Select Department--</option>     
+            {% for beaker in beakers  %}
+            <option value="{{beaker}}">Beaker-{{beaker}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <input type="submit" value="Perform expirement" class="btn" id="submitInput">
+</form>
+  
+    <br/>
+   </div>
+  </div>
+</div>
+
+ 
+
+
+<!-- <script>
+
+$(document).ready(function(){
+
+ var department = $("#department");
+ var Employee = $("#Employee");
+ var $options = Employee.find('option');
+ department.on('change',function(){
+    Employee.html($options.filter('[value="'+ this.value  +'"]'));
+ }).trigger('change'); 
+
+
+});  -->
+</script> 
+</body>
+</html>
