@@ -19,11 +19,14 @@
                 justify-content: center;
             }
         </style>
-        <video id="video" width="400" height="300"
+        <!-- <video id="video" width="400" height="300"
         style="
         border-radius: 50px;
         "
-        autoplay muted></video>
+        autoplay muted></video> -->
+
+        <iframe width="560" height="315" src="http://10.156.248.197:8080/" frameborder="0" allowfullscreen></iframe>
+    </iframe>
     </body>
     <script type="text/javascript">
      const video = document.getElementById('video')
@@ -31,7 +34,7 @@
 function startVideo() {
     navigator.getUserMedia(
         { video: {}},
-        stream => video.srcObject = stream,
+        stream => video.srcObject = 'http://10.156.248.197:8080/',
        
         err => console.error(err)
     )
