@@ -181,36 +181,34 @@ def expirement1(request):
          n=2
    
 
-      slot=request.POST['slot']
+      testTubeslot=request.POST['testTube']
+      beakerSlot=request.POST['beaker']
+      pickPlace=request.POST['pickPlace']
     
 
-      if slot=='':
+      if testTubeslot=='':
          messages.info(request,'Please select the slot of test tube')
          # return redirect('expirement')
       
       # conveting the request.POST into json format
       s1 = json.dumps(request.POST)
       item = json.loads(s1)
-      # print(item)
-
       count=0
       
       
       for i in range(n-1):
          ingrident=request.POST['ingredient'+str(i+1)]
-         #print(ingrident)
          q.append(ingrident)
 
          amount=request.POST['amt'+str(i+1)]
-         #print(amount)
          q.append(amount)
       
       reactionEq=request.POST['expText']
-      print(reactionEq)
+      # print(reactionEq)
 
 
 
-      q.append(slot)
+      q.append(testTubeslot)
       q.append(reactionEq)
 
        # setting up redis queue
@@ -224,11 +222,10 @@ def expirement1(request):
 
       queue.enqueue(add_queue,q)
 
-      print(queue.get_job_ids(0))
+      # print(queue.get_job_ids(0))
 
-      jobid=queue.get_job_ids(0)[-1]
+      # jobid=queue.get_job_ids(0)[-1]
 
-      print(jobid)
       
       
       reactants=""
@@ -236,7 +233,18 @@ def expirement1(request):
       for i in range(0,len(q),2):
          reactants=reactants+q[i]+" "
       
-      print(reactants)
+      # print(reactants)
+
+      payload=""
+
+      payload=payload+testTubeslot
+      payload=payload+','
+      payload=payload+beakerSlot
+      payload=payload+','
+      payload=payload+pickPlace
+      print("slot: ",testTubeslot)
+      print("beakerSlot: ",beakerSlot)
+      print("pickPlace: ",pickPlace)
 
      
       
@@ -261,11 +269,11 @@ def expirement1(request):
       #           fail_silently=False
       #   )
 
-      beakerSlot=request.POST['beaker']
+      
 
       client=mqtt.Client()
-      client.connect("broker.mqttdashboard.com", 1883, 60)
-      client.publish('prateek1', payload=beakerSlot, qos=0, retain=False)
+      client.connect("10.156.248.70", 1883, 60)
+      client.publish('ddu', payload=payload, qos=0, retain=False)
 
       return redirect('index')
    

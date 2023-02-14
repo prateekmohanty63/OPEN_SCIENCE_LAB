@@ -12,7 +12,7 @@ q=queue.Queue(maxsize=6)
 
 
 
-broker = '10.156.248.197'
+broker = '10.156.248.70'
 port = 1883
 topic = "dropDown"
 # generate client ID with pub prefix randomly

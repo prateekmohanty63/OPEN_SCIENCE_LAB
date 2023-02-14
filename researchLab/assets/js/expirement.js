@@ -49,27 +49,38 @@ var i=2;
 
     var dest='0';
    
-    function click1(event,con)
-    {
-        event.preventDefault();
-        dest+=con;
-      
-        document.getElementById('slot').value=dest
-        console.log("Inside js")
+   function click1(event)
+   {
+       event.preventDefault();
+       dest=dest+'1';
 
+       let pickPlace=prompt("Press 1 for pickup or 2 for place: ")
+       console.log(pickPlace)
+
+       dest=dest+','
+       dest=dest+pickPlace
        
      
-       // return false
-    }
-    function click2(event)
-    {
-        event.preventDefault();
-        dest+='2';
-        document.getElementById('slot').value=dest
+       document.getElementById('slot').value=dest
+       console.log("Inside js")
 
-        document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
-        //return false
-    }
+      
+    
+      // return false
+   }
+   function click2(event)
+   {
+       event.preventDefault();
+       dest=dest+'2';
+       let pickPlace=prompt("Press 1 for pickup or 2 for place: ")
+       console.log(pickPlace)
+       dest=dest+','
+       dest=dest+pickPlace
+     
+       document.getElementById('slot').value=dest
+       // document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
+       //return false
+   }
 
     function click3(event)
     {

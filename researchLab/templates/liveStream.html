@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Streaming Webcam</title>
+        
+    </head>
+    <body>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                display: flex;
+                width: 100vw;
+                height: 100vh;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+        <video id="video" width="400" height="300"
+        style="
+        border-radius: 50px;
+        "
+        autoplay muted></video>
+    </body>
+    <script type="text/javascript">
+     const video = document.getElementById('video')
+
+function startVideo() {
+    navigator.getUserMedia(
+        { video: {}},
+        stream => video.srcObject = stream,
+       
+        err => console.error(err)
+    )
+}
+startVideo()
+    </script>
+</html>

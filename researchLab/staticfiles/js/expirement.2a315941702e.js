@@ -57,7 +57,7 @@ var i=2;
         let pickPlace=prompt("Press 1 for pickup or 2 for place: ")
         console.log(pickPlace)
       
-        document.getElementById('slot').value=dest+","+pickPlace
+        document.getElementById('slot').value=dest+pickPlace
         console.log("Inside js")
 
        
@@ -71,7 +71,7 @@ var i=2;
         let pickPlace=prompt("Press 1 for pickup or 2 for place: ")
         console.log(pickPlace)
       
-        document.getElementById('slot').value=dest+","+pickPlace
+        document.getElementById('slot').value=dest+pickPlace
         // document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
         //return false
     }

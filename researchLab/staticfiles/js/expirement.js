@@ -53,8 +53,11 @@ var i=2;
     {
         event.preventDefault();
         dest+='1';
+
+        let pickPlace=prompt("Press 1 for pickup or 2 for place: ")
+        console.log(pickPlace)
       
-        document.getElementById('slot').value=dest
+        document.getElementById('slot').value=dest+","+pickPlace
         console.log("Inside js")
 
        
@@ -65,9 +68,11 @@ var i=2;
     {
         event.preventDefault();
         dest+='2';
-        document.getElementById('slot').value=dest
-
-        document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
+        let pickPlace=prompt("Press 1 for pickup or 2 for place: ")
+        console.log(pickPlace)
+      
+        document.getElementById('slot').value=dest+","+pickPlace
+        // document.getElementById('expText').innerHTML+='ZN+HCL -> ZNCL2+H2'
         //return false
     }
 
