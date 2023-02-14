@@ -336,18 +336,18 @@ def peak(request):
       
       res={'expirement':payload}
 
-      client=mqtt.Client()
-      client.connect("broker.mqttdashboard.com", 1883, 60)
+      # client=mqtt.Client()
+      # client.connect("broker.mqttdashboard.com", 1883, 60)
      # res=request.POST['res']
       #print(res)
       #msg=res
       #print(msg)
-      client.publish('prateek1', payload=payload, qos=0, retain=False)
+      # client.publish('prateek1', payload=payload, qos=0, retain=False)
       
       print('before sending')
 
       # cloud amqp publish
-      publish('peak_value',payload)
+      # publish('peak_value',payload)
 
       print('after sending')
 
