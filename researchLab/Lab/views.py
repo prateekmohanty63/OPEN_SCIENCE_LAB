@@ -431,7 +431,7 @@ def beakerTest(request):
 
 class VideoCamera(object):
    def __init__(self):
-      print('hello3')
+      print('hello4')
       pass
 
    def __del__(self):
