@@ -25,6 +25,21 @@ import random
 
 
 
+# restframework
+
+from rest_framework import generics,viewsets
+from rest_framework.response import Response
+from knox.models import AuthToken
+from rest_framework import generics
+from django.contrib.auth.models import User
+from rest_framework import status
+from rest_framework.views import APIView
+from django.http import Http404
+
+from .serializers import UserSerializer, UserRegisterSerializer,UserLoginSerializer
+
+
+
 
 # cloudmpq
 import pika,json
@@ -273,9 +288,9 @@ def expirement1(request):
 
       
 
-      client=mqtt.Client()
-      client.connect("10.156.248.197", 1883, 60)
-      client.publish('ddu', payload=payload, qos=0, retain=False)
+      # client=mqtt.Client()
+      # client.connect("10.156.248.197", 1883, 60)
+      # client.publish('ddu', payload=payload, qos=0, retain=False)
 
       return redirect('index')
    
@@ -291,6 +306,103 @@ def expirement1(request):
    
    return render(request,'testExpirement-1.html',context)
 
+
+  
+   
+
+
+def work(request):
+   return render(request,'works.html')
+
+def useLab(request):
+   return render(request,'use.html')
+
+
+def demo(request):
+   if request.method=="POST":
+      client=mqtt.Client()
+      client.connect("broker.mqttdashboard.com", 1883, 60)
+      res=request.POST['res']
+      print(res)
+      msg=res
+
+      if msg=='1':
+         return redirect('/expirement1')
+
+      print(msg)
+      client.publish('prateek1', payload=msg, qos=0, retain=False)
+      return HttpResponse("Value given")
+   return render(request,'demo.html')
+
+
+
+
+# redined pages
+def work1(request):
+   return render(request,'works-1.html')
+
+def use1(request):
+   return render(request,'use-1.html')
+
+def research1(request):
+   return render(request,'instrumentation-1.html')
+
+
+def beakerTest(request):
+
+   if request.method=="POST":
+      beakerSlot=request.POST['beaker']
+      print(beakerSlot)
+   f = open('/home/prateek-mohanty/Desktop/Projects/IISC-PROJECT/researchLab/Lab/beaker.txt', 'r')
+   if f.mode == 'r':
+       contents =f.read()
+      #  print (contents)
+       ls=contents.split()
+      #  print(ls)
+       
+      
+   context={'beakers':ls}
+   return render(request,'beakerTest.html',context)
+
+
+
+
+#  RESTFUL ROUTES
+
+
+
+# User Register API
+class UserRegisterAPI(generics.GenericAPIView):
+    serializer_class = UserRegisterSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response({
+        "user": UserSerializer(user, context=self.get_serializer_context()).data,
+        "token": AuthToken.objects.create(user)[1]
+        })
+
+
+# User SignIn API
+
+class SignInAPI(generics.GenericAPIView):
+    serializer_class=UserLoginSerializer
+
+    def post(self,request):
+        serializer=self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user=serializer.validated_data
+
+        return Response({
+             "user": UserSerializer(user, context=self.get_serializer_context()).data,
+            "token": AuthToken.objects.create(user)[1]
+        })
+
+
+
+# peak api
 
 def peak(request):
 
@@ -353,9 +465,10 @@ def peak(request):
 
       return JsonResponse(res)
    
-  
-   
 
+
+
+# dequeue api
 
 def dequeue(request):
 
@@ -382,73 +495,3 @@ def dequeue(request):
 
       return HttpResponse('Expirement dequeued')
    # return HttpResponse('Expirement dequeued')
-
-
-
-def work(request):
-   return render(request,'works.html')
-
-def useLab(request):
-   return render(request,'use.html')
-
-
-def demo(request):
-   if request.method=="POST":
-      client=mqtt.Client()
-      client.connect("broker.mqttdashboard.com", 1883, 60)
-      res=request.POST['res']
-      print(res)
-      msg=res
-
-      if msg=='1':
-         return redirect('/expirement1')
-
-      print(msg)
-      client.publish('prateek1', payload=msg, qos=0, retain=False)
-      return HttpResponse("Value given")
-   return render(request,'demo.html')
-
-
-
-
-# redined pages
-def work1(request):
-   return render(request,'works-1.html')
-
-def use1(request):
-   return render(request,'use-1.html')
-
-def research1(request):
-   return render(request,'instrumentation-1.html')
-
-
-def beakerTest(request):
-
-   if request.method=="POST":
-      beakerSlot=request.POST['beaker']
-      print(beakerSlot)
-   f = open('/home/prateek-mohanty/Desktop/Projects/IISC-PROJECT/researchLab/Lab/beaker.txt', 'r')
-   if f.mode == 'r':
-       contents =f.read()
-      #  print (contents)
-       ls=contents.split()
-      #  print(ls)
-       
-      
-   context={'beakers':ls}
-   return render(request,'beakerTest.html',context)
-
-
-class VideoCamera(object):
-   def __init__(self):
-      print('hello4')
-      pass
-
-   def __del__(self):
-      pass
-
-   def get_frame(self):
-      pass
-
-   def update(self):
-      pass

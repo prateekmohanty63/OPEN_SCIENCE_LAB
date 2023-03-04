@@ -1,6 +1,7 @@
 from unicodedata import name
 from . import views
 from django.urls import path
+from .views import UserRegisterAPI,SignInAPI
 
 urlpatterns=[
     path('',views.index,name='index'),
@@ -32,6 +33,12 @@ urlpatterns=[
 
 
      # beakerTest
-     path('beaker/',views.beakerTest,name='beakerTest')
+     path('beaker/',views.beakerTest,name='beakerTest'),
+
+
+     # rest apis
+      path('userRegister/', UserRegisterAPI.as_view(), name='userRegister'),
+      path('userlogin/',SignInAPI.as_view(),name="userLogin"),
+
   
 ]

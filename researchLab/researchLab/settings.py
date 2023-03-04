@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'rest_framework',
      'django_rq',
 
+       'knox',
+
 ]
 
 MIDDLEWARE = [
@@ -62,6 +64,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+    ]
+}
 
 ROOT_URLCONF = 'researchLab.urls'
 
